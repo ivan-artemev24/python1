@@ -46,8 +46,24 @@ else:
 if a2-a1==a3-a2:
 
 
+#только +
+a=int(input())
+b=int(input())
+c=int(input())
+s=0
+if a>0:
+    s=s+a
 
 
+
+#наименьшее из 4 чисел
+if a<=b and a<=c and a<=d:
+    print(a)
+elif 
+
+
+
+    
 
 
 
