@@ -53,7 +53,20 @@ b = int(input())
 for i in range(a,b-1,-1):
     print(i)
 
-
+'''
+ААА
+ААА
+ААА
+Е
+ББББ
+ББББ
+'''
+#вывод последовательности
+for i in range(3):
+    print("А"*3)
+print("Е")
+for i in range(2):
+    print("Б"*4)
 
 
 
