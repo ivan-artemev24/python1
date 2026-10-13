@@ -1,52 +1,74 @@
-from random import *
-#r = randint(1,10)
-#print(r)
-#характеристики персонажа
-hp = 100
-attack = 10
-armor = 5
-money = 0
+from random import * #случайные числа
+
+
+attack = 25 #атака
+hp = 100 #здоровье
+flag_block = 0 #блок
+money = 10 #деньги
 
 #характеристики врага
-enemy_hp = 80
-enemy_attack = 10
-enemy_armor = 5
-enemy_money = 0
+enemy_attack = 25
+enemy_hp = 100
+enemy_block = 0
+
+
 
 while True:
+    #наши действия
     print(f"Ваша атака: {attack} Ваша здоровье: {hp}")
     print(f"Атака врага: {enemy_attack} Здоровье врага: {enemy_hp}")
     print('Выберите действие:')
     print('1 - атака')
     print('2 - защита')
+    print('3 - улучшить атаку')
     n = input()
     if n == '1':
-        r = randint(1,100)
-        if r <= 90:
-            damage = attack + randint(-3,3)
-            enemy_hp -= damage
-            print(f"Вы попали по врагу! Ваш урон: {damage}. У врага {enemy_hp} здоровья")
-            if enemy_hp <= 0:
-                print("Враг повержен!")
-                break
+        if enemy_block == 1:#если враг выставил защиту
+            print("Враг блокирует ваш удар!")
+            enemy_block = 0
         else:
-            print("Вы промахнулись!")
+            r = randint(1, 100)
+            if r <= 90:  # попадание
+                damage = attack + randint(-10, 10)
+                enemy_hp -= damage
+                print(f"Вы попали! Ваш урон: {damage}. Здоровье врага: {enemy_hp}")
+                if enemy_hp <= 0:
+                    print("Враг повержен!")
+                    break#прерываем цикл
+            else:  # промах
+                print(f"Промах!")
     elif n == "2":
-        print("Защита")
+        print("Вы успешно выставили защиту")
+        flag_block = 1
+    elif n == "3":
+        r = randint(3,10)
+        attack += r
+        print(f"Вы улучшили атаку на {r}, ваша атака {attack}")
     else:
-        print("неверный вариант")
-
+        print("Неверное значение. Ход переходит врагу.")
     #действия врага
     n = randint(1,3)
     if n == 1:
-        pass
-
-        
-        
-
-
-
-
-
+        if flag_block == 1:#игрок выставил защиту
+            print("Враг атакует, но вы успешно блокируете удар врага!")
+            flag_block = 0
+        else:
+            r = randint(1,100)
+            if r <= 90:  # попадание
+                damage = enemy_attack + randint(-10, 10)
+                hp -= damage
+                print(f"Враг попал! Его урон: {damage}. Ваше здоровье {hp}")
+                if hp <= 0:
+                    print("Вы проиграли!")
+                    break
+            else:  # промах
+                print(f"Враг промахнулся!")
+    elif n == 2:
+        print("Враг выставил защиту")
+        enemy_block = 1
+    elif n == 3:
+        r = randint(3, 10)
+        enemy_attack += r
+        print(f"Враг улучшил атаку на {r}, атака врага {enemy_attack}")
 
     
