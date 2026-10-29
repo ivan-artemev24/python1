@@ -47,3 +47,39 @@ while a!=0:
     i+=1
 print(mini, imini)
 
+
+#максимальная цифра
+a = int(input())
+maxi=-100000
+while a!=0:
+    d = a%10
+    if d > maxi:
+        maxi=d
+    a=a//10
+print(maxi)
+
+
+#среднее арифмитическое цифр >5
+a = int(input())
+s=0
+k=0
+while a!=0:
+    d = a%10
+    if d > 5:
+        k+=1
+        s+=d   
+    a=a//10
+if k == 0:
+    print("НЕТ!")
+else:
+    print(s/k)
+
+
+
+
+
+
+
+
+
+
